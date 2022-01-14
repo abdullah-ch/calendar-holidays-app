@@ -1,0 +1,11 @@
+.center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.select {
+  width: 175px
+}
