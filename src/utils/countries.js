@@ -167,6 +167,7 @@ export const countryArr = [
   { value: 'PW', name: 'Palau' },
   { value: 'PS', name: 'Palestinian Territory},  Occupied' },
   { value: 'PA', name: 'Panama' },
+  { value: 'PK', name: 'Pakistan' },
   { value: 'PG', name: 'Papua New Guinea' },
   { value: 'PY', name: 'Paraguay' },
   { value: 'PE', name: 'Peru' },

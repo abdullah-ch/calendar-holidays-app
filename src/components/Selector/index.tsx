@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './selector.module.css';
 import { countryArr } from './../../utils/countries';
-import { fetchCalendarEndpoint } from '../../redux';
+import { fetchCalendarEndpoint, setCountry } from '../../redux';
 import { connect } from 'react-redux';
 
 const Selector = (props: any) => {
+  const {
+    country: { country },
+    year: { year },
+  } = props;
+
+  useEffect(() => {
+    if (country !== '') {
+      console.log('/// Country and Year Changed in useEffect', country, year);
+      props.fetchCalendarHolidays(year, country);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [country, year]);
+
   const handleSelect = (e: any) => {
-    console.log('//////country Selected', e.target.value);
-    props.fetchCalendarHolidays(2022, e.target.value);
+    props.setCountry(e.target.value);
   };
   return (
     <div className={`${styles.center}`}>
@@ -17,7 +29,9 @@ const Selector = (props: any) => {
         name="country"
         id="countries"
       >
-        <option value="PK">Pakistan</option>
+        <option disabled selected>
+          Select Desired Country
+        </option>
         {countryArr.map((country, i) => {
           return (
             <option key={i} value={country.value}>
@@ -29,10 +43,18 @@ const Selector = (props: any) => {
     </div>
   );
 };
+
+const mapStateToProps = (state: any) => {
+  return {
+    country: state.country,
+    year: state.year,
+  };
+};
 const mapDispatchToProps = (dispatch: any) => {
   return {
     fetchCalendarHolidays: (year: number, countryName: string) =>
       dispatch(fetchCalendarEndpoint(year, countryName)),
+    setCountry: (countryName: string) => dispatch(setCountry(countryName)),
   };
 };
-export default connect(null, mapDispatchToProps)(Selector);
+export default connect(mapStateToProps, mapDispatchToProps)(Selector);

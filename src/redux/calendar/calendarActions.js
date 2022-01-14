@@ -27,7 +27,8 @@ export const fetchCalendarAPIError = (error) => {
 
 const proneIntoCalendarData = (responseArr) => {
   const pronedArr = [];
-  console.log('/////unPronedArr', responseArr);
+  // console.log('/////unPronedArr', responseArr);
+
   responseArr.map((holiday, i) => {
     return pronedArr.push({
       id: i++,
@@ -47,7 +48,7 @@ const proneIntoCalendarData = (responseArr) => {
       ),
     });
   });
-  console.log('/////pronedArr', pronedArr);
+  // console.log('/////pronedArr', pronedArr);
   return pronedArr;
 };
 
@@ -63,6 +64,7 @@ export const fetchCalendarEndpoint = (year = 2022, countryName = 'PK') => {
       );
       dispatch(fetchCalendarAPISuccess(pronedHolidaysData));
     } catch (error) {
+      console.log(error);
       dispatch(fetchCalendarAPIError(error));
     }
   };
