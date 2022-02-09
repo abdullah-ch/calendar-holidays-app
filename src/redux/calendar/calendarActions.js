@@ -57,7 +57,7 @@ export const fetchCalendarEndpoint = (year = 2022, countryName = 'PK') => {
     dispatch(fetchCalendarAPI());
     try {
       const response = await axios.get(
-        `https://calendarific.com/api/v2/holidays?api_key=541e9e88f669c43fe5645105bb9655657fab0ad1&country=${countryName}&year=${year}`
+        `https://calendarific.com/api/v2/holidays?api_key=${process.env.REACT_APP_API_KEY}&country=${countryName}&year=${year}`
       );
       const pronedHolidaysData = proneIntoCalendarData(
         response.data.response.holidays
