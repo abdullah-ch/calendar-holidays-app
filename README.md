@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# How to Run  
+
+Create an account on [Calendarific](https://calendarific.com/) and copy your API Key.  
+Use Your API Key and create an `.env` file in the root of the folder
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
